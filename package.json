@@ -1,0 +1,10 @@
+{
+  "name": "mangauz-project",
+  "version": "1.0.0",
+  "description": "Zamonaviy Manga O'qish Platformasi (MangaBox.uz muqobili)",
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build:frontend": "cd frontend && npm run build"
+  }
+}

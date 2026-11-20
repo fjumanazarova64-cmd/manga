@@ -1,0 +1,298 @@
+.reader-wrapper {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Header */
+.reader-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.reader-header.hidden {
+  transform: translateY(-100%);
+}
+
+.reader-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reader-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.reader-back-btn:hover {
+  color: var(--primary);
+}
+
+.chapter-pill {
+  background: rgba(230, 57, 70, 0.2);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chapter-select {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.reader-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mode-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.brightness-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.brightness-control input[type='range'] {
+  width: 80px;
+  cursor: pointer;
+}
+
+.icon-reader-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Reader Body */
+.reader-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mode-webtoon {
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+.webtoon-strip {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.manga-page-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.manga-page-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.page-number-float {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Paged Mode */
+.mode-paged {
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+.paged-view {
+  max-height: 85vh;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.paged-img {
+  max-height: 85vh;
+  max-width: 90vw;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Footer Control */
+.reader-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.reader-footer.hidden {
+  transform: translateY(100%);
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.progress-info {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+/* In-reader paywall styles */
+.reader-locked-box {
+  max-width: 500px;
+  margin: 120px auto;
+  background: rgba(19, 19, 26, 0.95);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+.lock-big-icon {
+  font-size: 54px;
+  margin-bottom: 16px;
+}
+
+.reader-locked-box h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.reader-locked-box p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.locked-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-unlock-coins {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffd60a;
+  color: black;
+  font-weight: 800;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.btn-unlock-coins:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 214, 10, 0.5);
+}
+
+.btn-unlock-vip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gradient);
+  color: white;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.btn-unlock-vip:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow);
+}
