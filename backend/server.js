@@ -23,12 +23,17 @@ function loadDatabase() {
       mangaDatabase = JSON.parse(data);
       console.log(`[MangaLab DB] ${mangaDatabase.length} ta real manhwa/manga yuklandi!`);
     } else {
-      console.log('[MangaLab DB] Dump topilmadi');
+      console.log('[MangaLab DB] Dump fayli topilmadi');
     }
   } catch (err) {
     console.error('[MangaLab DB] Xatolik:', err);
   }
 }
+
+// Health check for Render
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime(), count: mangaDatabase.length });
+});
 
 // REST Endpoints
 app.get('/api/manga', (req, res) => {
@@ -75,8 +80,18 @@ app.post('/api/payments/checkout', (req, res) => {
   });
 });
 
+// Serve frontend build in production on Render
+const frontendDist = path.join(__dirname, '../frontend/dist');
+if (fs.existsSync(frontendDist)) {
+  console.log(`[Production] Serving frontend static files from: ${frontendDist}`);
+  app.use(express.static(frontendDist));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
+}
+
 loadDatabase();
 
-app.listen(PORT, () => {
-  console.log(`⛩️ MangaLab Integration API Server: http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`⛩️ MangaUz Server running on port ${PORT}`);
 });

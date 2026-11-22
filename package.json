@@ -1,10 +1,23 @@
 {
   "name": "mangauz-project",
   "version": "1.0.0",
-  "description": "Zamonaviy Manga O'qish Platformasi (MangaBox.uz muqobili)",
+  "description": "Zamonaviy Manga O'qish Platformasi (MangaLab / MangaBox muqobili)",
+  "type": "module",
+  "main": "backend/server.js",
   "scripts": {
-    "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "build:frontend": "cd frontend && npm run build"
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "render-build": "npm install && npm --prefix frontend install && npm --prefix frontend run build",
+    "start": "node backend/server.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

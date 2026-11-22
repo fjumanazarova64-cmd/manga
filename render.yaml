@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mangauz
+    env: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm run render-build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
